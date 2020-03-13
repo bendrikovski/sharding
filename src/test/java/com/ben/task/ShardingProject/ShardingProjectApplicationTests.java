@@ -1,4 +1,4 @@
-package ru.yandex.task.ShardingProject;
+package com.ben.task.ShardingProject;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

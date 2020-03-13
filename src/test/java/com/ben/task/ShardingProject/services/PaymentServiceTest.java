@@ -1,5 +1,6 @@
-package ru.yandex.task.ShardingProject.services;
+package com.ben.task.ShardingProject.services;
 
+import com.ben.task.ShardingProject.model.Payment;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
-import ru.yandex.task.ShardingProject.model.Payment;
 
 import java.math.BigDecimal;
 import java.util.Arrays;

@@ -1,13 +1,13 @@
-package ru.yandex.task.ShardingProject.controllers;
+package com.ben.task.ShardingProject.controllers;
 
+import com.ben.task.ShardingProject.model.Payment;
+import com.ben.task.ShardingProject.model.SumResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.yandex.task.ShardingProject.model.Payment;
-import ru.yandex.task.ShardingProject.model.SumResponse;
-import ru.yandex.task.ShardingProject.services.PaymentService;
+import com.ben.task.ShardingProject.services.PaymentService;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;

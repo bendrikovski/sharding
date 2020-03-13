@@ -1,4 +1,4 @@
-package ru.yandex.task.ShardingProject.model;
+package com.ben.task.ShardingProject.model;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

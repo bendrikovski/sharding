@@ -1,4 +1,4 @@
-package ru.yandex.task.ShardingProject;
+package com.ben.task.ShardingProject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

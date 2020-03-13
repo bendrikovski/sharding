@@ -1,10 +1,10 @@
-package ru.yandex.task.ShardingProject.services;
+package com.ben.task.ShardingProject.services;
 
+import com.ben.task.ShardingProject.model.Payment;
+import com.ben.task.ShardingProject.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.yandex.task.ShardingProject.model.Payment;
-import ru.yandex.task.ShardingProject.repository.PaymentRepository;
 
 import java.math.BigDecimal;
 import java.util.List;

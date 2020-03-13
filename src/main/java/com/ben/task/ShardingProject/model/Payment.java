@@ -1,4 +1,4 @@
-package ru.yandex.task.ShardingProject.model;
+package com.ben.task.ShardingProject.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
