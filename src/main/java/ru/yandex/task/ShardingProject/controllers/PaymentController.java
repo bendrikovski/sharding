@@ -1,20 +1,20 @@
 package ru.yandex.task.ShardingProject.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 import ru.yandex.task.ShardingProject.model.Payment;
-import ru.yandex.task.ShardingProject.repository.PaymentRepository;
+import ru.yandex.task.ShardingProject.model.SumResponse;
 import ru.yandex.task.ShardingProject.services.PaymentService;
 
+import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
 import java.math.BigDecimal;
-import java.net.URI;
 import java.util.List;
 
+@Validated
 @RestController
 public class PaymentController {
     private PaymentService paymentService;
@@ -24,20 +24,22 @@ public class PaymentController {
         this.paymentService = paymentService;
     }
 
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @PostMapping("/payments/save")
-    public ResponseEntity<?> savePayments(@RequestBody List<Payment> payments, Model model) {
-//        for (Payment p : payments) {
-//            System.out.println(p.getAmount() + ", " + p.getSender_id() + ", " + p.getRecipient_id());
-//        }
+    public ResponseEntity<String> savePayments(@RequestBody @Valid List<Payment> payments) {
         paymentService.saveAll(payments);
-        return ResponseEntity.created(URI.create("/payments/save")).build();
+        return ResponseEntity.ok("valid");
     }
 
     @PostMapping("/payments/sum")
-    public BigDecimal sumPaymentsBySenderId(@RequestParam Integer sender_id, Model model) {
+    public SumResponse sumPaymentsBySenderId(@RequestParam Integer sender_id)  {
         BigDecimal sum = paymentService.getSumBySenderId(sender_id);
-        System.out.println(sum);
-        return sum;
+        return new SumResponse(sum);
     }
 
+    @ExceptionHandler(ConstraintViolationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    ResponseEntity<String> handleConstraintViolationException(ConstraintViolationException e) {
+        return new ResponseEntity<>( e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
 }

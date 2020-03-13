@@ -1,10 +1,10 @@
 package ru.yandex.task.ShardingProject.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.math.BigDecimal;
 import javax.persistence.GeneratedValue;
-import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
@@ -13,8 +13,13 @@ public class Payment {
     @GeneratedValue
     private UUID id;
 
+    @NotNull(message = "Amount must not be empty!")
     private BigDecimal amount;
+
+    @NotNull(message = "Sender_id must not be empty!")
     private Integer sender_id;
+
+    @NotNull(message = "Recipient_id must not be empty!")
     private Integer recipient_id;
 
     Payment() {
@@ -54,4 +59,5 @@ public class Payment {
     public UUID getId() {
         return id;
     }
+
 }
